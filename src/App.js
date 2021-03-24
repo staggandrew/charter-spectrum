@@ -136,17 +136,19 @@ const App = () => {
 
   // Render the table row with the resturant data.
   const renderData = (data, index) => {
-    return data[index].map((r) => {
-      return (
-        <tr key={r.id}>
-          <td>{r.name}</td>
-          <td>{r.city}</td>
-          <td>{r.state}</td>
-          <td>{r.telephone}</td>
-          <td>{r.genre}</td>
-        </tr>
-      )
-    })
+    if (data[index]) {
+      return data[index].map((r) => {
+        return (
+          <tr key={r.id}>
+            <td>{r.name}</td>
+            <td>{r.city}</td>
+            <td>{r.state}</td>
+            <td>{r.telephone}</td>
+            <td>{r.genre}</td>
+          </tr>
+        )
+      })
+    }
   };
 
   return (
