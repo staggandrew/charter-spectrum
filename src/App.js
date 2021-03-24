@@ -84,8 +84,8 @@ const App = () => {
     // Filter for the search box.
     newData = newData.filter(item => {
       if (!searchPhrase) return true
-      if (item.city.toLowerCase().includes(searchPhrase.toLowerCase())  || 
-          item.state.toLowerCase().includes(searchPhrase.toLowerCase()) || 
+      if (item.name.toLowerCase().includes(searchPhrase.toLowerCase())  || 
+          item.city.toLowerCase().includes(searchPhrase.toLowerCase()) || 
           item.genre.toLowerCase().includes(searchPhrase.toLowerCase())
         ) {
         return item
