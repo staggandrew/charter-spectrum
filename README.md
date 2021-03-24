@@ -1,5 +1,12 @@
 ## Charter/Spectrum Code Challenge.
 
+
+# Live
+http://ec2-54-224-38-235.compute-1.amazonaws.com/
+
+
+# Run locally
+
 - To run the app run the following commands. 
 - This solution does not include some of the stretch goals due to time constraints.
 
