@@ -200,7 +200,7 @@ const App = () => {
         <span className="left" onClick={onPageLeftClick} >&laquo;</span>
         <span className="right" onClick={onPageRightClick} >&raquo;</span>
       </div>
-      <span> {pageNumber + 1} or {dataToRender.length}</span>
+      <span>Page {pageNumber + 1} of {dataToRender.length}</span>
     </div>
   );
 }
