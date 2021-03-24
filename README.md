@@ -2,7 +2,7 @@
 
 
 # Live
-http://ec2-54-224-38-235.compute-1.amazonaws.com/
+http://54.224.38.235
 
 
 # Run locally
