@@ -24,7 +24,7 @@ const App = () => {
     });
 
     const data = await res.json();
-    
+
     let sortedResturants = data.sort((a, b) => a.name.localeCompare(b.name));
 
     let mappedGenres = data.map((r) => r.genre).sort((a, b) => a.localeCompare(b));
@@ -37,7 +37,7 @@ const App = () => {
     setStates(getUniqueStringArray(mappedStates));
 
     let pagedData = generatePages(sortedResturants);
-    
+
     setOriginalData(data);
     setDataToRender(pagedData);
   }
@@ -84,10 +84,10 @@ const App = () => {
     // Filter for the search box.
     newData = newData.filter(item => {
       if (!searchPhrase) return true
-      if (item.name.toLowerCase().includes(searchPhrase.toLowerCase())  || 
-          item.city.toLowerCase().includes(searchPhrase.toLowerCase()) || 
-          item.genre.toLowerCase().includes(searchPhrase.toLowerCase())
-        ) {
+      if (item.name.toLowerCase().includes(searchPhrase.toLowerCase()) ||
+        item.city.toLowerCase().includes(searchPhrase.toLowerCase()) ||
+        item.genre.toLowerCase().includes(searchPhrase.toLowerCase())
+      ) {
         return item
       }
     });
@@ -200,6 +200,7 @@ const App = () => {
         <span className="left" onClick={onPageLeftClick} >&laquo;</span>
         <span className="right" onClick={onPageRightClick} >&raquo;</span>
       </div>
+      <span> {pageNumber + 1} or {dataToRender.length}</span>
     </div>
   );
 }
