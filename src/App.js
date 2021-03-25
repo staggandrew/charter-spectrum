@@ -49,7 +49,7 @@ const App = () => {
 
   // Create the correct page size for rendering the table.
   const generatePages = (data) => {
-    let i, j, pagedData = [], pageSize = 10;
+    let i, j, pagedData = [], pageSize = 4;
     for (i = 0, j = data.length; i < j; i += pageSize) {
       pagedData.push(data.slice(i, i + pageSize));
     }
@@ -193,6 +193,13 @@ const App = () => {
       {dataToRender.length !== 0 ? (
         <table id='resturants'>
           <tbody>
+            <tr>
+              <th>name</th>
+              <th>city</th>
+              <th>state</th>
+              <th>telephone</th>
+              <th>genre</th>
+            </tr>
             {renderData(dataToRender, pageNumber)}
           </tbody>
         </table>
