@@ -1,5 +1,4 @@
 const DropDown = ({ name, data, currerntValue, onChange }) => {
-
     return (
         <div>
             <span>{`${name}`}: </span>

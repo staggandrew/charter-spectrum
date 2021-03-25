@@ -42,7 +42,7 @@ const App = () => {
 
     setOriginalData(data);
     setDataToRender(pagedData);
-  }
+  };
 
   // Init.
   useEffect(() => {
@@ -61,7 +61,7 @@ const App = () => {
     }
 
     return pagedData;
-  }
+  };
 
   // All filters being processed here.
   useEffect(() => {
@@ -149,7 +149,7 @@ const App = () => {
             <td>{r.genre}</td>
           </tr>
         )
-      })
+      });
     }
   };
 
