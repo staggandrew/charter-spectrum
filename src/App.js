@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import SearchBox from './components/SearchBox';
+import DropDown from './components/DropDown';
 
 const App = () => {
   const [originalData, setOriginalData] = useState([]);
@@ -155,39 +157,13 @@ const App = () => {
     <div className="App">
       <h1 id='title'>Resturants</h1>
       <div className="controlls">
-        <div>
-          <span>Search: </span>
-          <input type="text" placeholder="Search..." onChange={(e) => searchFilter(e)} />
-        </div>
+        <SearchBox searchFilter={searchFilter} />
         <div>
           <input onClick={onFilterCheckboxChange} checked={checked} type="checkbox" />
           <span>Use Filters</span>
         </div>
-        <div>
-          <span>State: </span>
-          <select value={stateFilter} name="state" onChange={onStateFilterChange}>
-            {
-              states.map((state) => {
-                return (
-                  <option value={state}>{state}</option>
-                )
-              })
-            }
-          </select>
-        </div>
-        <div>
-          <span>Genre: </span>
-          <select value={genreFilter} name="genre" onChange={onGenreFilterChange}>
-            {
-              genres.map((genre) => {
-                return (
-                  <option value={genre}>{genre}</option>
-                )
-              })
-            }
-          </select>
-        </div>
-
+        <DropDown name={"state"} data={states} currerntValue={stateFilter} onChange={onStateFilterChange} />
+        <DropDown name={"genre"} data={genres} currerntValue={genreFilter} onChange={onGenreFilterChange} />
       </div>
 
       {dataToRender.length !== 0 ? (
