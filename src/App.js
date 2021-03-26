@@ -3,6 +3,7 @@ import './App.css';
 import SearchBox from './components/SearchBox';
 import DropDown from './components/DropDown';
 import PageSelector from './components/PageSelector';
+import CheckBox from './components/CheckBox';
 
 const App = () => {
   const [originalData, setOriginalData] = useState([]);
@@ -19,7 +20,7 @@ const App = () => {
   const [stateFilter, setStateFilter] = useState('');
   const [genreFilter, setGenreFilter] = useState('');
 
-  const [checked, setChecked] = useState(true);
+  const [isFilterActive, setIsFilterActive] = useState(true);
 
   const [isAcending, setIsAcending] = useState(true);
 
@@ -76,7 +77,7 @@ const App = () => {
   useEffect(() => {
     let newData = originalData;
 
-    if (checked) {
+    if (isFilterActive) {
       newData = newData.filter(item => {
         if (!stateFilter || stateFilter === 'All') return true
         if (item.state === stateFilter) {
@@ -106,7 +107,7 @@ const App = () => {
     let pagedData = generatePages(newData);
 
     setDataToRender(pagedData);
-  }, [stateFilter, genreFilter, checked, searchPhrase]);
+  }, [stateFilter, genreFilter, isFilterActive, searchPhrase]);
 
   // Ensure unique data in string array.
   const getUniqueStringArray = (d) => {
@@ -123,7 +124,7 @@ const App = () => {
   };
 
   const onFilterCheckboxChange = () => {
-    setChecked(!checked);
+    setIsFilterActive(!isFilterActive);
   };
 
   const onPageRightClick = () => {
@@ -167,10 +168,7 @@ const App = () => {
       <h1 id="title">Resturants</h1>
       <div className="controlls">
         <SearchBox searchFilter={searchFilter} />
-        <div>
-          <input onClick={onFilterCheckboxChange} checked={checked} type="checkbox" />
-          <span>Use Filters</span>
-        </div>
+        <CheckBox onFilterCheckboxChange={onFilterCheckboxChange} isFilterActive={isFilterActive} />
         <DropDown name={"state"} data={states} currerntValue={stateFilter} onChange={onStateFilterChange} />
         <DropDown name={"genre"} data={genres} currerntValue={genreFilter} onChange={onGenreFilterChange} />
       </div>
