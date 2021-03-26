@@ -30,10 +30,20 @@ const App = () => {
 
     const data = await res.json();
 
-    let sortedResturants = data.sort((a, b) => a.name.localeCompare(b.name));
+    setOriginalData(data);
+  };
 
-    let mappedGenres = data.map((r) => r.genre).sort((a, b) => a.localeCompare(b));
-    let mappedStates = data.map((r) => r.state).sort((a, b) => a.localeCompare(b))
+  // Init.
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  // Process data for filters and sorting.
+  useEffect(() => {
+    let sortedResturants = originalData.sort((a, b) => a.name.localeCompare(b.name));
+
+    let mappedGenres = originalData.map((r) => r.genre).sort((a, b) => a.localeCompare(b));
+    let mappedStates = originalData.map((r) => r.state).sort((a, b) => a.localeCompare(b))
 
     mappedGenres.unshift('All');
     mappedStates.unshift('All');
@@ -43,14 +53,8 @@ const App = () => {
 
     let pagedData = generatePages(sortedResturants);
 
-    setOriginalData(data);
     setDataToRender(pagedData);
-  };
-
-  // Init.
-  useEffect(() => {
-    loadData();
-  }, []);
+  }, [originalData]);
 
   // Create the correct page size for rendering the table.
   const generatePages = (data) => {
