@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: helvetica;
 }
 
 .App-logo {
@@ -9,7 +10,6 @@
 
 #title {
   text-align: center;
-  font-family: arial, sans-serif;
 }
 
 .controlls {
@@ -31,7 +31,7 @@
 }
 
 #resturants tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #aabbdd;
 }
 
 #resturants th {
@@ -84,13 +84,4 @@
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

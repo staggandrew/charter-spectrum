@@ -21,6 +21,8 @@ const App = () => {
 
   const [checked, setChecked] = useState(true);
 
+  const [isAcending, setIsAcending] = useState(true);
+
   const loadData = async () => {
     const res = await fetch("https://code-challenge.spectrumtoolbox.com/api/restaurants", {
       headers: {
@@ -162,7 +164,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1 id='title'>Resturants</h1>
+      <h1 id="title">Resturants</h1>
       <div className="controlls">
         <SearchBox searchFilter={searchFilter} />
         <div>
@@ -174,7 +176,7 @@ const App = () => {
       </div>
 
       {dataToRender.length !== 0 ? (
-        <table id='resturants'>
+        <table id="resturants">
           <tbody>
             <tr>
               <th>name</th>
