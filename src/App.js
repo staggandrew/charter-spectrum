@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import SearchBox from './components/SearchBox';
 import DropDown from './components/DropDown';
+import PageSelector from './components/PageSelector';
 
 const App = () => {
   const [originalData, setOriginalData] = useState([]);
@@ -9,6 +10,8 @@ const App = () => {
   const [searchPhrase, setSearchPhrase] = useState('');
 
   const [pageNumber, setPageNumber] = useState(0);
+
+  const [currentPageSize] = useState(10);
 
   const [states, setStates] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -51,7 +54,7 @@ const App = () => {
 
   // Create the correct page size for rendering the table.
   const generatePages = (data) => {
-    let i, j, pagedData = [], pageSize = 4;
+    let i, j, pagedData = [], pageSize = currentPageSize;
     for (i = 0, j = data.length; i < j; i += pageSize) {
       pagedData.push(data.slice(i, i + pageSize));
     }
@@ -181,11 +184,12 @@ const App = () => {
         </table>
       ) : <h1>Nothing to render.</h1>}
 
-      <div className="pagination">
-        <span className="left" onClick={onPageLeftClick} >&laquo;</span>
-        <span className="right" onClick={onPageRightClick} >&raquo;</span>
-      </div>
-      <span>Page {pageNumber + 1} of {dataToRender.length}</span>
+      <PageSelector
+        onPageLeftClick={onPageLeftClick}
+        onPageRightClick={onPageRightClick}
+        pageNumber={pageNumber}
+        pageCount={dataToRender.length}
+      />
     </div>
   );
 }
